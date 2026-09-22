@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="mx-auto max-w-3xl px-4 py-8 text-base-content">
+
+  <!-- breadcrumbs -->
+  <nav class="text-xs breadcrumbs text-base-content/60 mb-4">
+    <ul>
+      <li><a href="{{ get_url(path='@/_index.md', lang=lang) }}" class="hover:text-primary transition-colors">{{
+          root_section.extra.menu_home }}</a></li>
+      <li class="text-base-content/80 font-medium truncate max-w-[180px] md:max-w-xs"># {{ term.name }}</li>
+    </ul>
+  </nav>
+
+  <!-- ページタイトル -->
+  <header class="mb-10 border-b border-base-300 pb-5">
+    <h1 class="text-3xl font-black tracking-tight flex items-center gap-3">
+      # {{ term.name }}
+      <span class="text-sm font-normal text-base-content/60">({{ term.pages | length }} posts)</span>
+    </h1>
+  </header>
+
+  <!-- 記事一覧（サムネイル付きカードリスト） -->
+  <div class="space-y-6">
+    {% for page in term.pages %}
+    <article class="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-base-200/50 hover:bg-base-200 transition-colors">
+      {# Thumbnail check #}
+      {% set thumb = page.extra.thumbnail | default(value="") %}
+
+      {% if thumb == "" %}
+      {% set thumb_url = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400'
+      height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23e5e7eb'/%3E%3Ctext x='50%25'
+      y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='sans-serif'
+      font-size='34'%3ENo Image%3C/text%3E%3C/svg%3E" %}
+      {% else %}
+      {# ★ 記事のパス（page.path）とファイル名を結合して、確実に正しい絶対パスを生成する #}
+      {% set thumb_path = page.path ~ thumb %}
+      {% set thumb_url = get_url(path=thumb_path) %}
+      {% endif %}
+
+      <figure class="w-32 sm:w-48 h-24 sm:h-32 flex-shrink-0 overflow-hidden rounded-box bg-base-200">
+        <a href="{{ page.permalink | safe }}" class="w-full h-full block">
+          <img src="{{ thumb_url | safe }}" alt="{{ page.title }}"
+            class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
+        </a>
+      </figure>
+
+      <!-- 記事情報 -->
+      <div class="flex flex-col justify-between flex-grow">
+        <div>
+          <div class="text-xs text-base-content/60 mb-1">
+            <time datetime="{{ page.date }}">{{ page.date }}</time>
+          </div>
+          <h2 class="text-lg font-bold">
+            <a href="{{ page.permalink | safe }}" class="hover:text-primary transition-colors">
+              {{ page.title }}
+            </a>
+          </h2>
+          {% if page.description %}
+          <p class="text-sm text-base-content/70 mt-1 line-clamp-2">
+            {{ page.description }}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock content %}

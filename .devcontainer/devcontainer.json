@@ -1,0 +1,17 @@
+{
+    "name": "Zola Development Environment",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "Netcode.zola-plugins"
+            ]
+        }
+    },
+    "forwardPorts": [
+        1111
+    ]
+    // "remoteUser": "root"
+}

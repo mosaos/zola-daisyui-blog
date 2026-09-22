@@ -1,0 +1,35 @@
+<div id="artwork-carousel" class="relative w-full h-96 my-6 rounded-box overflow-hidden bg-base-200">
+  {% for asset in page.assets %}
+  <div class="artwork-slide absolute inset-0 flex items-center justify-center opacity-0" data-index="{{ loop.index0 }}">
+    <img src="{{ asset }}" class="max-h-full max-w-full object-contain" alt="Artwork detail {{ loop.index }}" />
+  </div>
+  {% endfor %}
+
+  <!-- Previous -->
+  <button type="button"
+    class="carousel-prev btn btn-sm btn-circle btn-ghost absolute left-2 top-1/2 -translate-y-1/2 z-10"
+    aria-label="Previous image">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+
+  <!-- Next -->
+  <button type="button"
+    class="carousel-next btn btn-sm btn-circle btn-ghost absolute right-2 top-1/2 -translate-y-1/2 z-10"
+    aria-label="Next image">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+
+  <!-- Play / Pause -->
+  <button type="button" class="carousel-toggle btn btn-sm btn-circle btn-ghost absolute top-2 right-2 z-10"
+    aria-label="Pause slideshow">
+    <i class="fa-solid fa-pause"></i>
+  </button>
+
+  <!-- Indicators -->
+  <div class="carousel-indicators absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+    {% for asset in page.assets %}
+    <button type="button" class="carousel-indicator w-2 h-2 rounded-full bg-base-content/40 transition-all"
+      data-index="{{ loop.index0 }}" aria-label="Show image {{ loop.index }}"></button>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,35 @@
+{% set current_url = page.permalink | default(value=config.base_url) %}
+
+{% if page.title %}
+<!-- 個別記事（ブログ・作品など）用の構造化データ -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ page.title }}",
+    "description": "{{ page.description | default(value=config.description) }}",
+    "url": "{{ current_url | safe }}",
+    {% if page.date %}
+    "datePublished": "{{ page.date }}",
+    {% endif %}
+    {% if page.updated %}
+    "dateModified": "{{ page.updated }}",
+    {% endif %}
+    "author": {
+      "@type": "Person",
+      "name": "{{ config.author | default(value='mosaos') }}"
+    }
+  }
+  </script>
+{% else %}
+<!-- トップページ用の構造化データ -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{ config.title }}",
+    "url": "{{ config.base_url | safe }}",
+    "description": "{{ config.description }}"
+  }
+  </script>
+{% endif %}

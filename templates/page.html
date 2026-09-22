@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+
+{% set styles = get_url(path="css/page.css", cachebust=true) %}
+<link rel="stylesheet" href="{{ styles | safe }}">
+
+{% set copy_js = get_url(path="js/copy-button.js", cachebust=true) %}
+<script src="{{ copy_js | safe }}" defer></script>
+
+{% set carousel_js = get_url(path="js/carousel.js", cachebust=true) %}
+<script src="{{ carousel_js | safe }}" defer></script>
+
+{% endblock extra_head %}
+
+{% block content %}
+
+<article class="w-full max-w-3xl mx-auto px-4 py-8 text-base-content">
+
+  {% include "fragments/breadcrumbs.html" %}
+
+  <!-- Article header -->
+  <header class="mb-10 border-b border-base-300 pb-5">
+    <h1 class="text-3xl font-black tracking-tight md:text-4xl mb-4 text-base-content">
+      {{ page.title }}
+    </h1>
+
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-base-content/50 border-base-content/10">
+      {% if page.date %}
+      <time class="font-mono flex items-center gap-1">
+        <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+          class="w-3.5 h-3.5">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+        </svg>
+        {{ page.date | date(format="%Y-%m-%d") }}
+      </time>
+      {% endif %}
+
+      <span class="flex items-center gap-1">
+        <span>By</span><span class="font-medium text-base-content/80">mosaos</span>
+      </span>
+      <!-- tags -->
+      {% if page.taxonomies.tags %}
+      <div class="flex flex-wrap gap-1.5">
+        <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+          class="w-3.5 h-3.5">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
+        </svg>
+        {% for tag in page.taxonomies.tags %}
+        <a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=page.lang) }}"
+          class="hover:text-primary transition-colors  text-base-content/80">
+          #{{ tag }}
+        </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </header>
+
+  {% if page.extra.slideshow %}
+  {% include "fragments/artwork-carousel.html" %}
+  {% endif %}
+
+  <!-- table of contents -->
+  <div class="fixed right-6 bottom-6 z-50">
+    <details class="dropdown dropdown-top dropdown-end">
+      <summary class="btn btn-circle btn-primary shadow-lg cursor-pointer list-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+        </svg>
+      </summary>
+      <!-- The contents of the table of contents that pops up when clicked. -->
+      <ul
+        class="dropdown-content menu p-4 shadow-2xl bg-base-200 rounded-box w-72 max-h-[70vh] overflow-y-auto mb-2 border border-base-300">
+        <li class="menu-title font-bold text-base mb-2">{{ root_section.extra.toc }}</li>
+        {% for h1 in page.toc %}
+        <li>
+          <a href="{{ h1.permalink | safe }}" class="hover:underline py-1">{{ h1.title }}</a>
+          {% if h1.children %}
+          <ul class="pl-4 space-y-1 mt-1">
+            {% for h2 in h1.children %}
+            <li>
+              <a href="{{ h2.permalink | safe }}" class="text-xs opacity-80 hover:underline py-0.5">{{ h2.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </details>
+  </div>
+
+  <!-- Article body -->
+  <div
+    class="blog-body prose prose-sm md:prose-base max-w-none 
+            prose-headings:font-bold prose-headings:tracking-tight 
+            prose-h2:border-l-4 prose-h2:border-primary prose-h2:pl-3 prose-h2:mt-10 prose-h2:mb-4
+            prose-h3:mt-8 prose-h3:mb-2
+            prose-p:leading-relaxed prose-p:mb-4
+            prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+            prose-code:text-secondary-content prose-code:bg-secondary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded">
+    {{ page.content | safe }}
+  </div>
+
+</article>
+{% endblock content %}

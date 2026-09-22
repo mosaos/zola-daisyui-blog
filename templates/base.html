@@ -1,0 +1,66 @@
+{% set current_lang = lang | default(value=config.default_language) %}
+{% if current_lang == config.default_language %}
+{% set section_path = "_index.md" %}
+{% else %}
+{% set section_path = "_index." ~ current_lang ~ ".md" %}
+{% endif %}
+{% set root_section = get_section(path=section_path) %}
+
+<!DOCTYPE html>
+<html lang="{{ lang }}" data-theme="{{ config.extra.daisyui_theme | default(value='light') }}">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% set favicon = get_url(path="img/favicon.ico") %}
+  <link rel="icon" href="{{ favicon | safe }}">
+  <title>
+    {% if page.title %}
+    {{ page.title }} | {{ config.title }}
+    {% elif section.title and section.title != config.title %}
+    {{ section.title }} | {{ config.title }}
+    {% else %}
+    {{ config.title }}
+    {% endif %}
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  {% set style = get_url(path="css/style.css") %}
+  <link rel="stylesheet" href="{{ style | safe }}">
+  {% include "fragments/head-ogp.html" %}
+  {% include "fragments/head-schema.html" %}
+  <script>
+    // apply saved theme.
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+  </script>
+  {% block extra_head %}
+  {% endblock extra_head %}
+</head>
+
+<body class="bg-base-200 min-h-screen text-base-content">
+  <div class="drawer lg:drawer-open">
+    <input id="sidebar-drawer" type="checkbox" class="drawer-toggle" />
+
+    <div class="drawer-content flex flex-col min-h-screen">
+      <!-- header -->
+      {% include "fragments/header.html" %}
+
+      <!-- main content -->
+      <main class="p-6 space-y-8 flex-grow max-w-5xl w-full mx-auto">
+        {% block content %}{% endblock content %}
+      </main>
+
+      <!-- footer -->
+      {% include "fragments/footer.html" %}
+    </div>
+
+    <!-- sidebar -->
+    {% include "fragments/sidebar.html" %}
+  </div>
+</body>
+
+</html>

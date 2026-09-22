@@ -1,0 +1,8 @@
+  .tooltip::before {
+      white-space: pre-line;
+  }
+
+  .works-card:focus {
+      outline: none;
+      box-shadow: none;
+  }

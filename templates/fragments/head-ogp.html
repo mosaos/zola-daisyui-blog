@@ -1,0 +1,39 @@
+{% set site_title = config.title %}
+{% set site_description = config.description %}
+{% set current_url = page.permalink | default(value=config.base_url) %}
+
+{% if page.title %}
+{% set current_title = page.title ~ " | " ~ site_title %}
+{% set og_type = "article" %}
+{% else %}
+{% set current_title = site_title %}
+{% set og_type = "website" %}
+{% endif %}
+
+{% if page.description %}
+{% set current_description = page.description %}
+{% else %}
+{% set current_description = site_description %}
+{% endif %}
+
+{# ---- image setting ---- #}
+{% set og_image = config.base_url ~ config.extra.default_ogp_image %}
+
+{% if page.extra.thumbnail %}
+{% set og_image = page.permalink ~ page.extra.thumbnail %}
+{% endif %}
+
+<!-- Open Graph Protocol (OGP) -->
+<meta property="og:title" content="{{ current_title }}">
+<meta property="og:description" content="{{ current_description }}">
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:url" content="{{ current_url }}">
+<meta property="og:image" content="{{ og_image }}">
+
+<!-- Twitter / X Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ current_title }}">
+<meta name="twitter:description" content="{{ current_description }}">
+<meta name="twitter:image" content="{{ og_image }}">
+<!-- You can also add your X account ID if necessary. -->
+<!-- <meta name="twitter:site" content="@your_twitter_id"> -->

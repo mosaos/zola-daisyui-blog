@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="space-y-6">
+  <!-- welcome message -->
+  <div role="alert" class="alert alert-vertical sm:alert-horizontal bg-base-100 border border-base-200 shadow-sm">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+      class="stroke-current text-info h-6 w-6 shrink-0">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+    <div>
+      <h3 class="font-bold">{{ root_section.extra.what_is_this }}</h3>
+      <div class="text-sm">
+        <p>{{ root_section.extra.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- card list grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- blog card -->
+    <div class="card bg-base-100 shadow-md border border-base-200 hover:shadow-lg transition-shadow">
+      <div class="card-body">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">📝</span>
+          <h2 class="card-title">{{ root_section.extra.menu_blog }}</h2>
+        </div>
+        <p class="text-sm text-base-content/70">
+          {{ root_section.extra.blog_description }}
+        </p>
+        <div class="card-actions justify-end mt-2">
+          <a href="{{ get_url(path='@/blog/_index.md', lang=lang) }}" class="btn btn-primary btn-sm btn-outline">
+            {{ root_section.extra.view_all }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- works card -->
+    <div class="card bg-base-100 shadow-md border border-base-200 hover:shadow-lg transition-shadow">
+      <div class="card-body">
+        <div class="flex items-center gap-2">
+          <span class="text-xl">🎨</span>
+          <h2 class="card-title">{{ root_section.extra.menu_works }}</h2>
+        </div>
+        <p class="text-sm text-base-content/70">
+          {{ root_section.extra.works_description }}
+        </p>
+        <div class="card-actions justify-end mt-2">
+          <a href="{{ get_url(path='@/works/_index.md', lang=lang) }}" class="btn btn-primary btn-sm btn-outline">
+            {{ root_section.extra.view_all }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+{% endblock content %}

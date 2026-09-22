@@ -1,0 +1,29 @@
+<aside class="drawer-side z-20">
+  <label for="sidebar-drawer" class="drawer-overlay"></label>
+  <div class="menu bg-base-100 min-h-screen w-64 p-4 shadow-xl flex flex-col justify-between">
+    <div>
+      <div class="flex items-center gap-2 px-2 py-4 mb-4 border-b border-base-200">
+        <i class="fa-solid fa-cubes text-2xl text-primary"></i>
+        <span class="text-xl font-black tracking-wider">Menu</span>
+      </div>
+      <ul class="space-y-1">
+        <li>
+          <a href="{{ get_url(path='@/_index.md', lang=lang) }}">
+            <i class="fa-solid fa-home w-5"></i><span>{{ root_section.extra.menu_dashboard }}</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ get_url(path='@/blog/_index.md', lang=lang) }}">
+            <i class="fa-solid fa-file w-5"></i><span>{{ root_section.extra.menu_blog }}</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{ get_url(path='@/works/_index.md', lang=lang) }}">
+            <i class="fa-solid fa-palette w-5"></i><span>{{ root_section.extra.menu_works }}</span>
+          </a>
+        </li>
+      </ul>
+      {% include "fragments/tag-cloud.html" %}
+    </div>
+  </div>
+</aside>

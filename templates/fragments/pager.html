@@ -1,0 +1,22 @@
+{# Pager #}
+{% if paginator and paginator.number_pagers > 1 %}
+<div class="flex justify-center items-center space-x-4 mt-12 pt-6 border-t border-base-300">
+
+  {% if paginator.previous %}
+  <a href="{{ paginator.previous }}" class="btn btn-sm btn-outline"><i class="fa-solid fa-chevron-left"></i></a>
+  {% else %}
+  <button class="btn btn-sm btn-outline btn-disabled" disabled><i class="fa-solid fa-chevron-left"></i></button>
+  {% endif %}
+
+  <span class="text-sm opacity-70 font-medium">
+    {{ paginator.current_index }} / {{ paginator.number_pagers }}
+  </span>
+
+  {% if paginator.next %}
+  <a href="{{ paginator.next }}" class="btn btn-sm btn-outline"><i class="fa-solid fa-chevron-right"></i></a>
+  {% else %}
+  <button class="btn btn-sm btn-outline btn-disabled" disabled><i class="fa-solid fa-chevron-right"></i></button>
+  {% endif %}
+
+</div>
+{% endif %}

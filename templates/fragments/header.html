@@ -1,0 +1,108 @@
+<header class="navbar bg-base-100 shadow-sm sticky top-0 z-50 px-4">
+  <div class="flex-none lg:hidden">
+    <label for="sidebar-drawer" class="btn btn-square btn-ghost">
+      <i class="fa-solid fa-bars text-xl"></i>
+    </label>
+  </div>
+  <div class="flex-1">
+    <a href="{{ get_url(path='@/_index.md', lang=lang) }}" class="text-xl font-bold ml-2 lg:ml-0">
+      {{ config.title }}
+    </a>
+  </div>
+
+  <!-- Theme Switcher (Icon Dropdown) -->
+  <div class="dropdown dropdown-end tooltip tooltip-left" data-tip="Change&#10;Theme">
+    <div tabindex="0" role="button" class="btn btn-ghost btn-sm">
+      <!-- Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+        class="size-4 text-base-content/70">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M4.098 19.928a3.75 3.75 0 0 0 1.537 1.392 3.75 3.75 0 0 0 3.824-.352l7.732-5.799a3.75 3.75 0 0 0 .97-4.887l-1.34-2.234a3.75 3.75 0 0 0-4.04-1.616l-7.234 1.808a3.75 3.75 0 0 0-2.585 2.585l-1.808 7.234a3.75 3.75 0 0 0 1.616 4.04z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5z" />
+      </svg>
+    </div>
+
+    <ul tabindex="0"
+      class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-44 max-h-80 overflow-y-auto flex flex-col flex-nowrap text-xs"
+      onclick="const a = event.target.closest('a[data-theme]'); if(a){ const t = a.dataset.theme; document.documentElement.setAttribute('data-theme', t); localStorage.setItem('theme', t); }">
+
+      <li class="menu-title"><span>Theme</span></li>
+      <li><a data-theme="light">Light</a></li>
+      <li><a data-theme="dark">Dark</a></li>
+      <li><a data-theme="cupcake">Cupcake</a></li>
+      <li><a data-theme="bumblebee">Bumblebee</a></li>
+      <li><a data-theme="emerald">Emerald</a></li>
+      <li><a data-theme="corporate">Corporate</a></li>
+      <li><a data-theme="synthwave">Synthwave</a></li>
+      <li><a data-theme="retro">Retro</a></li>
+      <li><a data-theme="cyberpunk">Cyberpunk</a></li>
+      <li><a data-theme="valentine">Valentine</a></li>
+      <li><a data-theme="halloween">Halloween</a></li>
+      <li><a data-theme="garden">Garden</a></li>
+      <li><a data-theme="forest">Forest</a></li>
+      <li><a data-theme="aqua">Aqua</a></li>
+      <li><a data-theme="lofi">Lofi</a></li>
+      <li><a data-theme="pastel">Pastel</a></li>
+      <li><a data-theme="fantasy">Fantasy</a></li>
+      <li><a data-theme="wireframe">Wireframe</a></li>
+      <li><a data-theme="black">Black</a></li>
+      <li><a data-type="luxury" data-theme="luxury">Luxury</a></li> <!-- data-themeがあればOK -->
+      <li><a data-theme="dracula">Dracula</a></li>
+      <li><a data-theme="cmyk">Cmyk</a></li>
+      <li><a data-theme="autumn">Autumn</a></li>
+      <li><a data-theme="business">Business</a></li>
+      <li><a data-theme="acid">Acid</a></li>
+      <li><a data-theme="lemonade">Lemonade</a></li>
+      <li><a data-theme="night">Night</a></li>
+      <li><a data-theme="coffee">Coffee</a></li>
+      <li><a data-theme="winter">Winter</a></li>
+      <li><a data-theme="dim">Dim</a></li>
+      <li><a data-theme="nord">Nord</a></li>
+      <li><a data-theme="sunset">Sunset</a></li>
+    </ul>
+  </div>
+
+  <!-- LANG switcher -->
+  <div class="flex gap-2 items-center">
+    <div class="dropdown dropdown-end tooltip tooltip-left" data-tip="Change&#10;Lang">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-sm">
+        <svg class="text-base-content/70 size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor"
+            d="M12 21a9 9 0 1 0 0-18m0 18a9 9 0 1 1 0-18m0 18c2.761 0 3.941-5.163 3.941-9S14.761 3 12 3m0 18c-2.761 0-3.941-5.163-3.941-9S9.239 3 12 3M3.5 9h17m-17 6h17">
+          </path>
+        </svg>
+      </div>
+      <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-32">
+        <li class="menu-title"><span>LANG</span></li>
+
+        {% if term or terms %}
+        {# --- タグ一覧 (terms) / 個別タグ (term) の場合 --- #}
+        {% set current_lang = lang | default(value=config.default_language) %}
+
+        {# マップなので `code`（キー）と `l`（値）の2つを受け取るようにする #}
+        {% for code, l in config.languages %}
+        <li>
+          <a href="{{ get_url(path='tags', lang=code) }}"
+            class="{% if current_lang == code %}active font-bold{% endif %}">
+            {{ code | upper }}
+          </a>
+        </li>
+        {% endfor %}
+
+        {% else %}
+        {# --- 通常のページ / セクションの場合 --- #}
+        {% set translations = page.translations | default(value=section.translations | default(value=[])) %}
+        {% for translation in translations %}
+        <li>
+          <a href="{{ translation.permalink }}"
+            class="{% if translation.lang == current_lang %}active font-bold{% endif %}">
+            {{ translation.lang | upper }}
+          </a>
+        </li>
+        {% endfor %}
+        {% endif %}
+
+      </ul>
+    </div>
+  </div>
+</header>

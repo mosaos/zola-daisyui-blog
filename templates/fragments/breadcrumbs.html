@@ -1,0 +1,27 @@
+<!-- If a 'page' exists, use it as 'current_item'; otherwise, use the 'section'. -->
+{% if page %}
+{% set current_item = page %}
+{% else %}
+{% set current_item = section %}
+{% endif %}
+
+<!-- breadcrumbs -->
+<nav class="text-xs breadcrumbs text-base-content/60 mb-4">
+  <ul>
+    <!-- loop and output parent folders (sections) -->
+    {% for ancestor_path in current_item.ancestors %}
+    {% if ancestor_path != "content/_index.md" and ancestor_path != "content/_index.en.md" %}
+    {% set ancestor = get_section(path=ancestor_path) %}
+    <li>
+      <a href="{{ ancestor.permalink | safe }}" class="hover:text-primary transition-colors">
+        {{ ancestor.title }}
+      </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+    <!-- Title of the current page or current section (list) -->
+    <li class="text-base-content/80 font-medium truncate max-w-[180px] md:max-w-xs">
+      {{ current_item.title }}
+    </li>
+  </ul>
+</nav>

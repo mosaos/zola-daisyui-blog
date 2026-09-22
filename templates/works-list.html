@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="mx-auto max-w-5xl">
+
+  {% include "fragments/breadcrumbs.html" %}
+
+  <!-- Works title -->
+  <header class="mb-12">
+    <h1 class="text-3xl font-bold tracking-tight">
+      {{ section.title }}
+    </h1>
+  </header>
+
+  <!-- Works Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% set pages = paginator.pages | default(value=section.pages) %}
+    {% for page in pages %}
+
+    {# hover:border の指定を削除してシャドウとタイトル変化のみに整理 #}
+    <a href="{{ get_url(path=page.path, lang=lang) }}"
+      class="works-card card bg-base-200 shadow-sm border border-base-300 overflow-hidden flex flex-col block group hover:shadow-md transition-all">
+
+      {# サムネイル判定：なければSVGのダミー画像を表示 #}
+      {% set thumb = page.extra.thumbnail | default(value="") %}
+      {% if thumb == "" %}
+      {% set thumb_url = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400'
+      height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d1d5db'/%3E%3Ctext x='50%25'
+      y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-family='sans-serif'
+      font-size='24'%3ENo Image%3C/text%3E%3C/svg%3E" %}
+      {% else %}
+      {% set thumb_url = get_url(path=page.path ~ page.extra.thumbnail) %}
+      {% endif %}
+
+      <figure class="h-48 w-full overflow-hidden bg-base-300">
+        <img src="{{ thumb_url | safe }}" alt="{{ page.title }}"
+          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+      </figure>
+
+      <div class="card-body p-5 flex flex-col flex-grow">
+        <div class="text-xs opacity-60 mb-1">
+          {{ page.date }}
+        </div>
+
+        {# タイトル（ホバー時にプライマリカラーに変化） #}
+        <h2 class="card-title text-lg font-semibold leading-snug group-hover:text-primary transition-colors">
+          {{ page.title }}
+        </h2>
+
+        {% if page.description %}
+        <p class="mt-2 text-sm leading-relaxed opacity-70 flex-grow">
+          {{ page.description }}
+        </p>
+        {% endif %}
+      </div>
+
+    </a>
+
+    {% endfor %}
+
+  </div>
+
+  {% include "fragments/pager.html" %}
+
+</div>
+
+{% endblock content %}

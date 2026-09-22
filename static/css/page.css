@@ -1,0 +1,206 @@
+  .blog-body {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: var(--fallback-bc, string);
+  }
+
+  .blog-body p {
+      margin: 0 0 1.5rem;
+  }
+
+  /* Headings */
+
+  .blog-body h2 {
+      margin: 3rem 0 1.25rem;
+      padding-bottom: 0.5rem;
+      padding-left: 0.75rem;
+      border-bottom: 1px dotted currentColor;
+      border-left: 4px solid currentColor;
+      font-size: 1.6rem;
+      font-weight: 800;
+      line-height: 1.4;
+  }
+
+  .blog-body h3 {
+      margin: 2.25rem 0 1rem;
+      padding-left: 0.7rem;
+      border-left: 2px solid currentColor;
+      font-size: 1.3rem;
+      font-weight: 800;
+      line-height: 1.5;
+  }
+
+  .blog-body h4 {
+      margin: 2rem 0 0.75rem;
+      font-size: 1.1rem;
+      font-weight: 800;
+      opacity: 0.9;
+  }
+
+  /* Links */
+
+  .blog-body a {
+      color: var(--p, currentColor);
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+      text-decoration-thickness: 1px;
+      transition: all 0.2s ease-in-out;
+  }
+
+  .blog-body a:hover {
+      color: var(--color-primary-focus, oklch(var(--p)));
+      opacity: 0.8;
+  }
+
+  /* Lists */
+
+  .blog-body ul,
+  .blog-body ol {
+      margin: 0 0 1.5rem;
+      padding-left: 1.75rem;
+  }
+
+  .blog-body ul {
+      list-style-type: disc;
+  }
+
+  .blog-body ol {
+      list-style-type: decimal;
+  }
+
+  .blog-body li {
+      margin-bottom: 0.5rem;
+  }
+
+  /* Inline code */
+
+  .blog-body :not(pre)>code {
+      padding: 0.15rem 0.4rem;
+      border: 1px solid oklch(var(--b3));
+      border-radius: 0.3rem;
+      color: oklch(var(--p));
+      background: oklch(var(--b2));
+
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
+          Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+  }
+
+  /* Code blocks
+     Zola's syntax highlighting generates classes such as
+     .z-code and .highlight.
+  */
+
+  .blog-body pre {
+      margin: 1.75rem 0;
+      padding: 1.25rem 1.5rem;
+      /* overflow-x: auto; */
+      overflow: visible;
+      /* 💡 外枠ははみ出しを許容する */
+      display: flex;
+      /* 💡 内部の並びをフレキシブルに */
+      flex-direction: column;
+
+
+      border: 1px solid oklch(var(--b3));
+      border-radius: 0.5rem;
+      background: oklch(var(--b2));
+      font-size: 0.875rem;
+      line-height: 1.7;
+      box-shadow: inset 2px 2px 1px rgba(0, 0, 0, 0.8);
+  }
+
+  .blog-body pre code {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
+          Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: inherit;
+  }
+
+  .blog-body pre button {
+      position: absolute !important;
+      top: 0.75rem;
+      right: 0.75rem;
+      z-index: 10;
+  }
+
+  /* Blockquotes */
+
+  .blog-body blockquote {
+      margin: 1.75rem 0;
+      padding: 0.75rem 1.25rem;
+      border-left: 3px solid oklch(var(--p));
+      background: oklch(var(--b2));
+      opacity: 0.9;
+      border-radius: 0 0.5rem 0.5rem 0;
+      font-style: italic;
+  }
+
+  .blog-body blockquote p:last-child {
+      margin-bottom: 0;
+  }
+
+  /* Tables */
+
+  .blog-body table {
+      display: block;
+      width: 100%;
+      margin: 1.75rem 0;
+      overflow-x: auto;
+      border-collapse: collapse;
+  }
+
+  .blog-body th,
+  .blog-body td {
+      padding: 0.65rem 0.9rem;
+      border: 1px solid oklch(var(--b3));
+      text-align: left;
+  }
+
+  .blog-body th {
+      background: oklch(var(--b2));
+      font-weight: 700;
+  }
+
+  /* Images */
+
+  .blog-body img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 2rem auto;
+      border-radius: 0.5rem;
+      box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Horizontal rule */
+
+  .blog-body hr {
+      margin: 3rem 0;
+      border: 0;
+      border-top: 1px solid oklch(var(--b3));
+  }
+
+  .artwork-slide {
+      visibility: hidden;
+      transition: opacity 1.5s ease-in-out;
+  }
+
+  .artwork-slide img {
+      filter: drop-shadow(0 6px 12px rgb(0 0 0 / 0.36));
+  }
+
+  .artwork-slide.active {
+      visibility: visible;
+      opacity: 1;
+  }
+
+  .carousel-indicator.active {
+      width: 1.5rem;
+      background-color: oklch(var(--bc));
+  }
