@@ -1,7 +1,7 @@
 {% set current_url = page.permalink | default(value=config.base_url) %}
 
 {% if page.title %}
-<!-- 個別記事（ブログ・作品など）用の構造化データ -->
+<!-- Structured data for individual articles (blog posts, creative works, etc.) -->
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -22,7 +22,7 @@
   }
   </script>
 {% else %}
-<!-- トップページ用の構造化データ -->
+<!-- Structured data for the home page -->
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",

@@ -13,7 +13,7 @@
     </ul>
   </nav>
 
-  <!-- ページタイトル -->
+  <!-- Page title -->
   <header class="mb-10 border-b border-base-300 pb-5">
     <h1 class="text-3xl font-black tracking-tight flex items-center gap-3">
       # {{ term.name }}
@@ -21,7 +21,7 @@
     </h1>
   </header>
 
-  <!-- 記事一覧（サムネイル付きカードリスト） -->
+  <!-- Article List (Card List with Thumbnails) -->
   <div class="space-y-6">
     {% for page in term.pages %}
     <article class="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-base-200/50 hover:bg-base-200 transition-colors">
@@ -34,7 +34,7 @@
       y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%239ca3af' font-family='sans-serif'
       font-size='34'%3ENo Image%3C/text%3E%3C/svg%3E" %}
       {% else %}
-      {# ★ 記事のパス（page.path）とファイル名を結合して、確実に正しい絶対パスを生成する #}
+      {# Concatenate the article path #}
       {% set thumb_path = page.path ~ thumb %}
       {% set thumb_url = get_url(path=thumb_path) %}
       {% endif %}
@@ -46,7 +46,7 @@
         </a>
       </figure>
 
-      <!-- 記事情報 -->
+      <!-- Article Information -->
       <div class="flex flex-col justify-between flex-grow">
         <div>
           <div class="text-xs text-base-content/60 mb-1">
@@ -67,6 +67,6 @@
     </article>
     {% endfor %}
   </div>
-
 </div>
+
 {% endblock content %}

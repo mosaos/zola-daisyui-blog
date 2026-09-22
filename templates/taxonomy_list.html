@@ -11,18 +11,18 @@
     </ul>
   </nav>
 
-  <!-- ページタイトル -->
+  <!-- Page title -->
   <header class="mb-10 border-b border-base-300 pb-5">
     <h1 class="text-3xl font-black tracking-tight">Tags</h1>
   </header>
 
-  <!-- タグ一覧（控えめな件数カウンター付き） -->
+  <!-- Tag list ( Includes a count indicator ) -->
   <div class="flex flex-wrap gap-2.5">
     {% for term in terms %}
     <a href="{{ term.permalink | safe }}"
       class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-base-200 hover:bg-primary hover:text-primary-content transition-colors text-sm font-medium">
       <span>#{{ term.name }}</span>
-      <!-- 件数バッジ部分 -->
+      <!-- Count badge area -->
       <span class="text-xs px-1.5 py-0.5 rounded-md bg-base-300/80 font-mono opacity-80">
         {{ term.pages | length }}
       </span>

@@ -18,11 +18,10 @@
     {% set pages = paginator.pages | default(value=section.pages) %}
     {% for page in pages %}
 
-    {# hover:border の指定を削除してシャドウとタイトル変化のみに整理 #}
     <a href="{{ get_url(path=page.path, lang=lang) }}"
       class="works-card card bg-base-200 shadow-sm border border-base-300 overflow-hidden flex flex-col block group hover:shadow-md transition-all">
 
-      {# サムネイル判定：なければSVGのダミー画像を表示 #}
+      {# Thumbnail check: Display an SVG dummy image if none exists. #}
       {% set thumb = page.extra.thumbnail | default(value="") %}
       {% if thumb == "" %}
       {% set thumb_url = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400'
@@ -43,7 +42,6 @@
           {{ page.date }}
         </div>
 
-        {# タイトル（ホバー時にプライマリカラーに変化） #}
         <h2 class="card-title text-lg font-semibold leading-snug group-hover:text-primary transition-colors">
           {{ page.title }}
         </h2>
@@ -54,11 +52,8 @@
         </p>
         {% endif %}
       </div>
-
     </a>
-
     {% endfor %}
-
   </div>
 
   {% include "fragments/pager.html" %}

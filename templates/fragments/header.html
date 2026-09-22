@@ -76,10 +76,10 @@
         <li class="menu-title"><span>LANG</span></li>
 
         {% if term or terms %}
-        {# --- タグ一覧 (terms) / 個別タグ (term) の場合 --- #}
+        {# --- For tag lists (terms) / individual tags (term) --- #}
         {% set current_lang = lang | default(value=config.default_language) %}
 
-        {# マップなので `code`（キー）と `l`（値）の2つを受け取るようにする #}
+        {# Since it is a map, configure it to accept two arguments: `code` (key) and `l` (value). #}
         {% for code, l in config.languages %}
         <li>
           <a href="{{ get_url(path='tags', lang=code) }}"
@@ -90,7 +90,7 @@
         {% endfor %}
 
         {% else %}
-        {# --- 通常のページ / セクションの場合 --- #}
+        {# --- For standard pages / sections --- #}
         {% set translations = page.translations | default(value=section.translations | default(value=[])) %}
         {% for translation in translations %}
         <li>

@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // 1枚だけなら操作UIは不要
+  // If there is only one image, no control UI is needed.
   if (slides.length === 1) {
     slides[0].classList.add("active");
     previous.hidden = true;
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
   previous.addEventListener("click", () => {
     previousSlide();
 
-    // 手動操作後も自動再生は継続
+    // Automatic playback continues after manual operation.
     if (playing) {
       stop();
       start();
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 初期状態
+  // Initial state
   slides[0].classList.add("active");
   indicators[0].classList.add("active");
 
