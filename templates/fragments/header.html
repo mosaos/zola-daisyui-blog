@@ -13,12 +13,11 @@
   <!-- Font Size Switcher (Icon Dropdown) -->
   <div class="dropdown dropdown-end tooltip tooltip-left" data-tip="Font&#10;Size">
     <div tabindex="0" role="button" class="btn btn-ghost btn-sm">
-      <!-- Size Icon -->
-      <i class="fa-solid fa-text-height"></i>
+      <i class="fa-solid fa-text-height text-base-content/70"></i>
     </div>
 
-    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-40 text-xs"
-      onclick="const a = event.target.closest('a[data-font-size]'); if(a){ const s = a.dataset.fontSize; const html = document.documentElement; html.classList.remove('font-size-sm', 'font-size-lg', 'font-size-xl'); if(s !== 'normal'){ html.classList.add('font-size-' + s); localStorage.setItem('site-font-size', s); } else { localStorage.removeItem('site-font-size'); } }">
+    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-32 text-xs"
+      onclick="const sizeEl = event.target.closest('a[data-font-size]'); if(sizeEl){ const s = sizeEl.dataset.fontSize; const html = document.documentElement; html.classList.remove('font-size-sm', 'font-size-lg', 'font-size-xl'); if(s !== 'normal'){ html.classList.add('font-size-' + s); localStorage.setItem('site-font-size', s); } else { localStorage.removeItem('site-font-size'); } }">
 
       <li class="menu-title"><span>Font Size</span></li>
       <li><a data-font-size="sm">S</a></li>
@@ -37,7 +36,7 @@
 
     <ul tabindex="0"
       class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-44 max-h-80 overflow-y-auto flex flex-col flex-nowrap text-xs"
-      onclick="const a = event.target.closest('a[data-theme]'); if(a){ const t = a.dataset.theme; document.documentElement.setAttribute('data-theme', t); localStorage.setItem('theme', t); }">
+      onclick="const themeEl = event.target.closest('a[data-theme]'); if(themeEl){ const t = themeEl.dataset.theme; document.documentElement.setAttribute('data-theme', t); localStorage.setItem('theme', t); }">
 
       <li class="menu-title"><span>Theme</span></li>
       <li><a data-theme="light">Light</a></li>
