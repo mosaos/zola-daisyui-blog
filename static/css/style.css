@@ -1,8 +1,21 @@
-  .tooltip::before {
-      white-space: pre-line;
-  }
+/*-- For font size switcher --*/
+html.font-size-sm {
+    font-size: 87.5%;
+}
 
-  .works-card:focus {
-      outline: none;
-      box-shadow: none;
-  }
+html.font-size-lg {
+    font-size: 112.5%;
+}
+
+html.font-size-xl {
+    font-size: 125%;
+}
+
+.tooltip::before {
+    white-space: pre-line;
+}
+
+.works-card:focus {
+    outline: none;
+    box-shadow: none;
+}

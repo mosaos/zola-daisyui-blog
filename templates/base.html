@@ -30,11 +30,18 @@
   <link rel="stylesheet" href="{{ style | safe }}">
   {% include "fragments/head-ogp.html" %}
   {% include "fragments/head-schema.html" %}
+  {% set fontsize_js = get_url(path="js/fontsize-switcher.js") %}
+  <script src="{{ fontsize_js | safe }}"></script>
   <script>
     // apply saved theme.
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+    // apply saved font-size.
+    const savedSize = localStorage.getItem('site-font-size');
+    if (savedSize) {
+      document.documentElement.classList.add('font-size-' + savedSize);
     }
   </script>
   {% block extra_head %}
