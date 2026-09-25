@@ -1,4 +1,32 @@
-<footer class="footer footer-center p-4 bg-base-300 text-base-content text-xs mt-auto">
-  <p>&copy; {{ now() | date(format="%Y") }} {{ config.title }} - Powered by <a
-      href="https://github.com/mosaos/zola-daisyui-blog">zola-daisyui-blog</a></p>
+{% set current_lang = lang | default(value=config.default_language) %}
+
+{% if current_lang == config.default_language %}
+{% set rss_url = get_url(path='atom.xml') %}
+{% else %}
+{% set rss_url = get_url(path='atom.xml', lang=current_lang) %}
+{% endif %}
+<footer class="footer sm:footer-horizontal bg-neutral text-neutral-content p-4">
+  <aside>
+    <p>&copy; {{ now() | date(format="%Y") }} {{ config.title }}<br />Powered by
+      <a href="https://github.com/mosaos/zola-daisyui-blog" class="hover:text-primary transition-colors">
+        <i class="fa-brands fa-github"></i> zola-daisyui-blog</a>
+    </p>
+  </aside>
+  <nav>
+    <div class="grid grid-flow-col gap-4 text-2xl">
+      <!-- Atom(RSS) -->
+      <a href="{{ rss_url }}" class="hover:text-primary transition-colors tooltip"
+        data-tip="RSS Feed ({{ current_lang | upper }})">
+        <i class="fa-solid fa-rss"></i>
+      </a>
+      <!-- github -->
+      <a href="https://github.com/mosaos/" class="hover:text-primary transition-colors">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <!-- youtube -->
+      <a href="#" class="hover:text-primary transition-colors">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+    </div>
+  </nav>
 </footer>
