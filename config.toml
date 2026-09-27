@@ -49,3 +49,4 @@ minify_js = true
 # Put all your custom variables here
 daisyui_theme = "night"
 default_ogp_image = "img/ogp-default.webp"
+# google_analytics = "G-XXXXXXXXXX"

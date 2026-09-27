@@ -53,6 +53,13 @@
     </div>
   </header>
 
+  {% if page.extra.show_thumbnail %}
+  {% set thumbnail = page.permalink ~ page.extra.thumbnail %}
+  <figure class="w-full bg-base-300">
+    <img src="{{ thumbnail | safe }}" alt="{{ page.title }}" />
+  </figure>
+  {% endif %}
+
   {% if page.extra.slideshow %}
   {% include "fragments/artwork-carousel.html" %}
   {% endif %}
