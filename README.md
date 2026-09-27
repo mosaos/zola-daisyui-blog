@@ -136,6 +136,16 @@ This Zola blog manages content using the following structure and conventions:
 
 ---
 
+## Blog
+
+For more details about why I created this template and how I use it, see the following blog post:
+
+[Zola daisyUI blog](https://mosaos.github.io/blog/zola-daisyui-blog/)
+
+This blog post also explains how to use this template, set it up on GitHub Pages with GitHub Actions, and automate deployments by separating the content repository and triggering the workflow when the content is updated.
+
+---
+
 ## Screenshot
 
 ![PC view](./img/zola-daisyui-blog-01.webp)
@@ -154,15 +164,11 @@ You can use this repository in two different ways depending on your preference:
 
 Click `Use this template` to create your own repository, and keep both the app and your Markdown content in a single repository.
 
-
 ### Content & App Separation *[Advanced]*
 
 Keep this template as your app/theme base, and manage your Markdown contents in a separate `Private` repository. You can then pull them together dynamically using GitHub Actions during deployment.
 
-
-
 ---
-
 
 ## How to Setup Zola
 
