@@ -23,7 +23,9 @@
     {{ config.title }}
     {% endif %}
   </title>
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5.7.46/daisyui.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+  <!-- <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" /> -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   {% set style = get_url(path="css/style.css") %}
@@ -33,6 +35,8 @@
   {% include "fragments/google-analytics.html" %}
   {% set fontsize_js = get_url(path="js/fontsize-switcher.js") %}
   <script src="{{ fontsize_js | safe }}"></script>
+  {% set theme_js = get_url(path="js/theme-changer.js") %}
+  <script src="{{ theme_js | safe }}"></script>
   <script>
     // apply saved theme.
     const savedTheme = localStorage.getItem('theme');
@@ -69,6 +73,7 @@
     <!-- sidebar -->
     {% include "fragments/sidebar.html" %}
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/daisyui@5.7.46/index.min.js"></script>
 </body>
 
 </html>

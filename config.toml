@@ -47,3 +47,4 @@ highlight_code = true
 daisyui_theme = "night"
 default_ogp_image = "/img/ogp-default.webp"
 # google_analytics = "G-XXXXXXXXXX"
+latest_max = 5

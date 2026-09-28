@@ -4,6 +4,17 @@ a[name] {
     scroll-margin-top: 80px;
 }
 
+/*-- For theme switcher --*/
+.dropdown:not(:focus-within) .dropdown-content {
+    pointer-events: none !important;
+    visibility: hidden !important;
+}
+
+.dropdown:focus-within .dropdown-content {
+    pointer-events: auto !important;
+    visibility: visible !important;
+}
+
 /*-- For font size switcher --*/
 html.font-size-sm {
     font-size: 87.5%;
@@ -31,11 +42,14 @@ html.font-size-xl {
     row-gap: 0.5rem;
 }
 
-@media (min-width: 768px) {
-    article h1.md\:text-4xl {
-        font-size: 2.25rem;
-        line-height: 2.5rem;
-    }
+main .text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+}
+
+main .text-3xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
 }
 
 article h1 {
