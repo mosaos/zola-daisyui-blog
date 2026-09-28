@@ -54,6 +54,15 @@ article .flex-nowrap {
     flex-wrap: nowrap;
 }
 
+article .dropdown-content li a {
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+}
+
+header .flex-nowrap {
+    flex-wrap: nowrap;
+}
+
 .breadcrumbs>ol>li+li::before,
 .breadcrumbs>ul>li+li::before {
     content: ">";
