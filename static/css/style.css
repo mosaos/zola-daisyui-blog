@@ -50,6 +50,10 @@ article .font-black {
     font-weight: var(--font-weight-black);
 }
 
+article .flex-nowrap {
+    flex-wrap: nowrap;
+}
+
 .breadcrumbs>ol>li+li::before,
 .breadcrumbs>ul>li+li::before {
     content: ">";
