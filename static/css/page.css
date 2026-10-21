@@ -76,10 +76,11 @@
 
   .blog-body :not(pre)>code {
       padding: 0.15rem 0.4rem;
-      border: 1px solid oklch(var(--b3));
+      /* border: 1px solid oklch(var(--b3)); */
+      border: 1px solid var(--color-base-300);
       border-radius: 0.3rem;
       color: oklch(var(--p));
-      background: oklch(var(--b2));
+      background: var(--color-base-100);
 
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
           Consolas, "Liberation Mono", "Courier New", monospace;
@@ -203,4 +204,8 @@
   .carousel-indicator.active {
       width: 1.5rem;
       background-color: oklch(var(--bc));
+  }
+
+  .blog-body .affiliate img {
+      margin: 0;
   }
