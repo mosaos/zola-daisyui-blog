@@ -23,6 +23,9 @@
     {{ config.title }}
     {% endif %}
   </title>
+  {% if page.description %}
+  <meta name="description" content="{{ page.description }}" />
+  {% endif %}
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5.7.46/daisyui.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
   <!-- <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" /> -->
