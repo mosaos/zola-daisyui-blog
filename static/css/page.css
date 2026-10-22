@@ -135,8 +135,8 @@
   .blog-body blockquote {
       margin: 1.75rem 0;
       padding: 0.75rem 1.25rem;
-      border-left: 3px solid oklch(var(--p));
-      background: oklch(var(--b2));
+      border-left: 3px solid var(--color-primary);
+      background: var(--color-base-100);
       opacity: 0.9;
       border-radius: 0 0.5rem 0.5rem 0;
       font-style: italic;
