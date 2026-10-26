@@ -76,10 +76,11 @@
 
   .blog-body :not(pre)>code {
       padding: 0.15rem 0.4rem;
-      border: 1px solid oklch(var(--b3));
+      /* border: 1px solid oklch(var(--b3)); */
+      border: 1px solid var(--color-base-300);
       border-radius: 0.3rem;
       color: oklch(var(--p));
-      background: oklch(var(--b2));
+      background: var(--color-base-100);
 
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
           Consolas, "Liberation Mono", "Courier New", monospace;
@@ -134,8 +135,8 @@
   .blog-body blockquote {
       margin: 1.75rem 0;
       padding: 0.75rem 1.25rem;
-      border-left: 3px solid oklch(var(--p));
-      background: oklch(var(--b2));
+      border-left: 3px solid var(--color-primary);
+      background: var(--color-base-100);
       opacity: 0.9;
       border-radius: 0 0.5rem 0.5rem 0;
       font-style: italic;
@@ -181,9 +182,9 @@
   /* Horizontal rule */
 
   .blog-body hr {
-      margin: 3rem 0;
-      border: 0;
-      border-top: 1px solid oklch(var(--b3));
+      margin: 2rem 0;
+      border: 1px solid var(--color-base-300);
+      border-top: 1px solid var(--color-base-100);
   }
 
   .artwork-slide {
@@ -203,4 +204,8 @@
   .carousel-indicator.active {
       width: 1.5rem;
       background-color: oklch(var(--bc));
+  }
+
+  .blog-body .affiliate img {
+      margin: 0;
   }
