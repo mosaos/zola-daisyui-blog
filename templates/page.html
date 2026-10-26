@@ -78,12 +78,14 @@
         <li class="menu-title font-bold text-base mb-2">{{ root_section.extra.toc }}</li>
         {% for h1 in page.toc %}
         <li>
-          <a href="{{ h1.permalink | safe }}" class="hover:underline py-1">{{ h1.title }}</a>
+          <a href="{{ h1.permalink | safe }}" class="hover:underline py-1 whitespace-normal break-words">{{ h1.title
+            }}</a>
           {% if h1.children %}
           <ul class="pl-4 space-y-1 mt-1">
             {% for h2 in h1.children %}
             <li>
-              <a href="{{ h2.permalink | safe }}" class="text-xs opacity-80 hover:underline py-0.5">{{ h2.title }}</a>
+              <a href="{{ h2.permalink | safe }}"
+                class="text-xs opacity-80 hover:underline py-0.5 whitespace-normal break-words">{{ h2.title }}</a>
             </li>
             {% endfor %}
           </ul>
