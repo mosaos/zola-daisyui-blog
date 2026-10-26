@@ -1,0 +1,63 @@
+<hr>
+<div class="mt-6">
+  <div class="flex flex-wrap items-center gap-3">
+    <span class="text-sm font-medium opacity-70">
+      {{ root_section.extra.share_this }}
+    </span>
+
+    {# X ( Twitter ) #}
+    {% if config.extra.sns_x | default(value=false) %}
+    <a href="https://twitter.com/intent/tweet?url={{ page.permalink | urlencode }}&text={{ page.title | urlencode }}"
+      target="_blank" rel="noopener noreferrer"
+      class="btn btn-sm btn-outline gap-2 hover:bg-neutral hover:text-neutral-content hover:border-neutral"
+      aria-label="Share on X">
+      <i class="fa-brands fa-x-twitter text-base"></i>
+      <span class="hidden sm:inline">X</span>
+    </a>
+    {% endif %}
+
+    {# Facebook #}
+    {% if config.extra.sns_facebook | default(value=false) %}
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.permalink | urlencode }}" target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-sm btn-outline gap-2 hover:bg-primary hover:text-primary-content hover:border-primary"
+      aria-label="Share on Facebook">
+      <i class="fa-brands fa-facebook-f text-base"></i>
+      <span class="hidden sm:inline">Facebook</span>
+    </a>
+    {% endif %}
+
+    {# Threads #}
+    {% if config.extra.sns_threads | default(value=false) %}
+    <a href="https://www.threads.net/intent/post?text={{ page.title | urlencode }}%20{{ page.permalink | urlencode }}"
+      target="_blank" rel="noopener noreferrer"
+      class="btn btn-sm btn-outline gap-2 hover:bg-neutral hover:text-neutral-content hover:border-neutral"
+      aria-label="Share on Threads">
+      <i class="fa-brands fa-threads text-base"></i>
+      <span class="hidden sm:inline">Threads</span>
+    </a>
+    {% endif %}
+
+    {# Hatena bookmark #}
+    {% if config.extra.sns_hatebu | default(value=false) %}
+    <a href="https://b.hatena.ne.jp/add?mode=confirm&url={{ page.permalink | urlencode }}&title={{ page.title | urlencode }}"
+      target="_blank" rel="noopener noreferrer"
+      class="btn btn-sm btn-outline gap-2 hover:bg-info hover:text-info-content hover:border-info"
+      aria-label="Bookmark on Hatena">
+      <i class="fa-solid fa-b text-base font-bold"></i>
+      <span class="hidden sm:inline">Hatena</span>
+    </a>
+    {% endif %}
+
+    {# LINE #}
+    {% if config.extra.sns_line | default(value=false) %}
+    <a href="https://social-plugins.line.me/lineit/share?url={{ page.permalink | urlencode }}" target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-sm btn-outline gap-2 hover:bg-success hover:text-success-content hover:border-success"
+      aria-label="Share on LINE">
+      <i class="fa-brands fa-line text-base"></i>
+      <span class="hidden sm:inline">LINE</span>
+    </a>
+    {% endif %}
+  </div>
+</div>
