@@ -25,18 +25,30 @@ as the existing content.
 
 - **Responsive Design**:  
   Clean and mobile-friendly layout powered by daisyUI and Tailwind CSS.
-- **Markdown-based**:  
-  Easily write blog posts and portfolio items using Markdown. Articles can also display a Table of Contents (TOC).
+- **Markdown-based Content**:  
+  Easily write blog posts and portfolio items using Markdown, with support for article metadata and a Table of Contents (TOC).
 - **Multilingual Support**:  
-  Built-in multi-language switcher that is scalable for any number of locales.
+  Built-in language switcher designed to support multiple locales.
 - **Static Site Generation (SSG)**:  
-  Blazing fast, secure, and requires no heavy server-side runtimes (Node.js-free).
+  Fast, lightweight, and secure static site generation with Zola. No Node.js installation or npm build step required.
 - **Dev Containers Support**:  
-  Ready-to-use development environment configuration for strict version consistency and easy onboarding.
+  Ready-to-use development environment based on Alpine Linux, with a pinned Zola version for consistent setup and easy onboarding.
 - **Tag Support**:  
-  Organize and filter content efficiently with flexible tagging.
+  Organize and browse content using tags.
+- **Floating Table of Contents**:  
+  Open a floating TOC popup to navigate article headings without permanently occupying screen space. Designed for both desktop and mobile layouts.
+- **Theme Switcher**:  
+  Switch between supported daisyUI themes, with the selected theme preserved across page visits.
+- **Font Size Switcher**:  
+  Adjust text size for comfortable reading, with the selected size preserved across page visits.
+- **Unified Blog and Portfolio Listings**:  
+  Display recent blog posts and portfolio items together in a unified latest-content section.
+- **Responsive Sidebar Navigation**:  
+  Use a sidebar on larger screens and an adapted navigation layout on mobile devices.
 - **Image Carousel / Slideshow**:  
-  Built-in responsive carousel to showcase multiple photos and artwork cleanly within your portfolio items.
+  Showcase multiple photos and artwork with a responsive carousel.
+- **Static Hosting Support**:  
+  Deploy the generated site to GitHub Pages or other static hosting services.
 
 ## System Requirement
 
@@ -45,11 +57,11 @@ as the existing content.
 
 I use the following environment.
 
-- Zola : 0.17.2 ( installed on Dev Container )
+- Zola : 0.22.1 ( installed on Dev Container )
 - OS : Windows 11
 - WSL : WSL2
-- Docker : docker-ce 28.1.1
-- daisyUI : v4.12
+- Docker : docker-ce 29.9.0
+- daisyUI : v5.7.46
 
 ---
 

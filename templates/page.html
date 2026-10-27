@@ -1,20 +1,24 @@
 {% extends "base.html" %}
 
+{#----- block extra_head -----#}
 {% block extra_head %}
 
 {% set styles = get_url(path="css/page.css", cachebust=true) %}
 <link rel="stylesheet" href="{{ styles | safe }}">
-
 {% set copy_js = get_url(path="js/copy-button.js", cachebust=true) %}
 <script src="{{ copy_js | safe }}" defer></script>
-
 {% set carousel_js = get_url(path="js/carousel.js", cachebust=true) %}
 <script src="{{ carousel_js | safe }}" defer></script>
 
 {% endblock extra_head %}
+{#----- end of block extra_head -----#}
 
 {% block content %}
 
+{% set author = config.author %}
+{% if page.authors %}
+{% set author = (page.authors | join(sep=", ")) %}
+{% endif %}
 <article class="w-full max-w-3xl mx-auto px-4 py-8 text-base-content">
 
   {% include "fragments/breadcrumbs.html" %}
@@ -35,7 +39,7 @@
       {% endif %}
 
       <span class="font-mono flex items-center gap-1">
-        <span>By</span><span class="font-medium text-base-content/80">mosaos</span>
+        <span>By</span><span class="font-medium text-base-content/80">{{author}}</span>
       </span>
       <!-- tags -->
       {% if page.taxonomies.tags %}
