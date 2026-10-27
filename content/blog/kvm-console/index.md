@@ -2,6 +2,7 @@
 title = "Enable Console Login on a KVM Guest"
 date = "2026-02-20"
 description = "How to configure a guest when console login is not available"
+authors = ["John Doe", "hoge"]
 
 [taxonomies]
 tags = ["Kvm", "Linux"]

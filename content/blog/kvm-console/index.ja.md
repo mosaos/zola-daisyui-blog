@@ -2,6 +2,7 @@
 title = "KVM ゲストでコンソールログイン可能にする"
 date = "2026-02-20"
 description = "コンソールログインできない場合の設定の仕方"
+authors = ["John Doe"]
 
 [taxonomies]
 tags = ["Kvm", "Linux"]
