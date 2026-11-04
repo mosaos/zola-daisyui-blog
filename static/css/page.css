@@ -1,7 +1,7 @@
   .blog-body {
       font-size: 1rem;
       line-height: 1.5;
-      color: var(--fallback-bc, string);
+      color: var(--color-base-content);
   }
 
   .blog-body p {
@@ -40,15 +40,17 @@
   /* Links */
 
   .blog-body a {
-      color: var(--p, currentColor);
+      color: var(--color-primary);
       text-decoration: underline;
       text-underline-offset: 0.2em;
       text-decoration-thickness: 1px;
-      transition: all 0.2s ease-in-out;
+      transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
   }
 
   .blog-body a:hover {
-      color: var(--color-primary-focus, oklch(var(--p)));
+      color: color-mix(in oklab,
+              var(--color-primary),
+              var(--color-base-content) 20%);
       opacity: 0.8;
   }
 
@@ -76,10 +78,10 @@
 
   .blog-body :not(pre)>code {
       padding: 0.15rem 0.4rem;
-      /* border: 1px solid oklch(var(--b3)); */
+      /* border: 1px solid  var(--color-base-300); */
       border: 1px solid var(--color-base-300);
       border-radius: 0.3rem;
-      color: oklch(var(--p));
+      color: var(--color-primary);
       background: var(--color-base-100);
 
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
@@ -103,9 +105,9 @@
       flex-direction: column;
 
 
-      border: 1px solid oklch(var(--b3));
+      border: 1px solid var(--color-base-300);
       border-radius: 0.5rem;
-      background: oklch(var(--b2));
+      background: var(--color-base-200);
       font-size: 0.875rem;
       line-height: 1.7;
       box-shadow: inset 2px 2px 1px rgba(0, 0, 0, 0.8);
@@ -159,12 +161,12 @@
   .blog-body th,
   .blog-body td {
       padding: 0.65rem 0.9rem;
-      border: 1px solid oklch(var(--b3));
+      border: 1px solid var(--color-base-300);
       text-align: left;
   }
 
   .blog-body th {
-      background: oklch(var(--b2));
+      background: var(--color-base-200);
       font-weight: 700;
   }
 
@@ -203,7 +205,7 @@
 
   .carousel-indicator.active {
       width: 1.5rem;
-      background-color: oklch(var(--bc));
+      background-color: var(--color-base-content);
   }
 
   .blog-body .affiliate img {

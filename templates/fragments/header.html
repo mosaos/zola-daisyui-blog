@@ -10,6 +10,17 @@
     </a>
   </div>
 
+  {% if config.extra.search_enabled | default(value=false) %}
+  <form action="{{ get_url(path='@/search-result/_index.md', lang=lang) }}" method="GET" class="w-full max-w-xs ml-4">
+    <!-- <input id="search-input" type="search" name="q" placeholder="Search..." class="input input-sm" /> -->
+    <label class="input input-sm">
+      <i class="fa-solid fa-magnifying-glass text-base-content/50"></i>
+      <input id="search-input" type="search" name="q" />
+      <kbd class="kbd kbd-xs">/</kbd>
+    </label>
+  </form>
+  {% endif %}
+
   <!-- Font Size Switcher (Icon Dropdown)
      Keep this dropdown last due to daisyUI v5 dropdown behavior. -->
   <!-- Font Size Switcher (Icon Dropdown) -->
