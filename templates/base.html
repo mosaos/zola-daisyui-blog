@@ -40,6 +40,10 @@
   <script src="{{ fontsize_js | safe }}"></script>
   {% set theme_js = get_url(path="js/theme-changer.js") %}
   <script src="{{ theme_js | safe }}"></script>
+  {% if config.extra.search_enabled | default(value=false) %}
+  {% set shortcut_js = get_url(path="js/search-shortcut.js") %}
+  <script src="{{ shortcut_js | safe }}"></script>
+  {% endif %}
   <script>
     // apply saved theme.
     const savedTheme = localStorage.getItem('theme');
