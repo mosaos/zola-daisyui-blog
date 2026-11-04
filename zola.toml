@@ -8,7 +8,7 @@ description = "mosaos portfolio and blog"
 compile_sass = false
 
 # Whether to build a search index to be used later on by a JavaScript library
-build_search_index = false
+build_search_index = true
 
 default_language = "en"
 
@@ -44,7 +44,14 @@ taxonomies = [
 [markdown.highlighting]
 theme = "github-dark"
 
+#------------------------------------------------------------------
+# The following are zola-daisyui-blog's specific settings
+#------------------------------------------------------------------
 [extra]
+# Enable search form independently of build_search_index.
+# Zola's standard build does not support Japanese search indexing.
+# The search form is only available for English (lang=en).
+search_enabled = true
 # Put all your custom variables here
 daisyui_theme = "night"
 default_ogp_image = "/img/ogp-default.webp"

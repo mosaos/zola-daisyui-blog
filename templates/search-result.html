@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{#----- block extra_head -----#}
+{% block extra_head %}
+
+{% set styles = get_url(path="css/page.css", cachebust=true) %}
+<link rel="stylesheet" href="{{ styles | safe }}">
+{% set copy_js = get_url(path="js/copy-button.js", cachebust=true) %}
+<script src="{{ copy_js | safe }}" defer></script>
+
+{% if config.extra.search_enabled | default(value=false) %}
+{% set elastic_js = get_url(path="elasticlunr.min.js") %}
+<script src="{{ elastic_js | safe }}"></script>
+{% set search_js = get_url(path="search_index.en.js") %}
+<script src="{{ search_js | safe }}"></script>
+{% set search_js = get_url(path="js/search-result.js", cachebust=true) %}
+<script src="{{ search_js | safe }}" defer></script>
+{% endif %}
+
+{% endblock extra_head %}
+{#----- end of block extra_head -----#}
+
+{% block content %}
+<!-- <article class="w-full max-w-3xl mx-auto px-4 py-8 text-base-content"> -->
+<article class="w-full max-w-3xl mx-auto px-4 py-8 text-base-content prose prose-lg max-w-none">
+
+  {% include "fragments/breadcrumbs.html" %}
+
+  <!-- Article header -->
+  <header class="mb-10 border-b border-base-300 pb-5">
+    <h1 class="text-4xl font-black tracking-tight md:text-4xl mb-4 text-base-content">
+      {{ section.title }}
+    </h1>
+  </header>
+
+
+  <!-- Search result -->
+  <section class="search-result-page">
+    <h2 class="text-xl font-bold">{{ section.extra.search_keyword }} : <span id="search-query-text"></span></h2>
+    <ul id="search-results" class="list-[square] pl-6"></ul>
+  </section>
+  <!-- <div id="search-result-list"></div> -->
+
+
+</article>
+
+{% endblock content %}

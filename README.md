@@ -37,6 +37,8 @@ as the existing content.
   Organize and browse content using tags.
 - **Floating Table of Contents**:  
   Open a floating TOC popup to navigate article headings without permanently occupying screen space. Designed for both desktop and mobile layouts.
+- **Site Search**:  
+  Search blog posts and portfolio items using Zola's built-in search index and elasticlunr.js. Search runs entirely in the browser, with no external search service required.
 - **Theme Switcher**:  
   Switch between supported daisyUI themes, with the selected theme preserved across page visits.
 - **Font Size Switcher**:  
