@@ -31,9 +31,8 @@
   {% set current_description = config.description %}
   {% endif %}
   <meta name="description" content="{{ current_description }}" />
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@5.7.46/daisyui.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5.7.50/daisyui.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
-  <!-- <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" /> -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   {% set style = get_url(path="css/style.css") %}
@@ -87,7 +86,7 @@
     <!-- sidebar -->
     {% include "fragments/sidebar.html" %}
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/daisyui@5.7.46/index.min.js"></script>
+  <!-- <script type="module" src="https://cdn.jsdelivr.net/npm/daisyui@5.7.50/index.min.js"></script> -->
 </body>
 
 </html>
