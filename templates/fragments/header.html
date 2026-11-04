@@ -25,7 +25,8 @@
      Keep this dropdown last due to daisyUI v5 dropdown behavior. -->
   <!-- Font Size Switcher (Icon Dropdown) -->
   <div class="dropdown dropdown-end tooltip tooltip-left">
-    <div tabindex="0" role="button" class="btn btn-ghost btn-sm">
+    <div tabindex="0" role="button" class="btn btn-ghost btn-sm"
+      aria-label="{{ trans(key='font_size_selector', lang=lang) }}">
       <i class="fa-solid fa-text-height text-base-content/70"></i>
     </div>
 
@@ -40,7 +41,8 @@
 
   <!-- Theme Switcher (Icon Dropdown) -->
   <div class="dropdown dropdown-end tooltip tooltip-left">
-    <div tabindex="0" role="button" class="btn btn-ghost btn-sm">
+    <div tabindex="0" role="button" class="btn btn-ghost btn-sm"
+      aria-label="{{ trans(key='theme_selector', lang=lang) }}">
       <!-- Theme Switcher Icon -->
       <i class="fa-solid fa-palette"></i>
     </div>
@@ -90,7 +92,8 @@
   <!-- LANG switcher -->
   <div class="flex gap-2 items-center">
     <div class="dropdown dropdown-end tooltip tooltip-left">
-      <div tabindex="0" role="button" class="btn btn-ghost btn-sm">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-sm"
+        aria-label="{{ trans(key='lang_selector', lang=lang) }}">
         <!-- Lang Switcher Icon -->
         <i class="fa-solid fa-earth-asia"></i>
       </div>

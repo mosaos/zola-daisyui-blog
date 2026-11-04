@@ -8,7 +8,7 @@
 
   <!-- Works title -->
   <header class="mb-12">
-    <h1 class="text-3xl font-bold tracking-tight">
+    <h1 class="text-4xl font-bold tracking-tight">
       {{ section.title }}
     </h1>
   </header>
@@ -19,7 +19,7 @@
     {% for page in pages %}
 
     <a href="{{ get_url(path=page.path, lang=lang) }}"
-      class="works-card card bg-base-200 shadow-sm border border-base-300 overflow-hidden flex flex-col block group hover:shadow-md transition-all">
+      class="card bg-base-200 shadow-sm border border-base-300 overflow-hidden flex flex-col block group hover:shadow-md transition-all">
 
       {# Thumbnail check: Display an SVG dummy image if none exists. #}
       {% set thumb = page.extra.thumbnail | default(value="") %}

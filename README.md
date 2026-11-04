@@ -128,7 +128,7 @@ vscode shows a dialog ( `Your application running on port 1111 is available. See
 
 ---
 
-# How to Create Contents
+## How to Create Contents
 
 This Zola blog manages content using the following structure and conventions:
 
@@ -147,6 +147,21 @@ This Zola blog manages content using the following structure and conventions:
   - Thumbnails can be easily defined within the markdown Front Matter (under `[extra]`). Please check the samples for exact syntax.
   - These thumbnail images are also utilized for Open Graph Protocol (OGP) previews when shared on social media.
   - **Recommended OGP Image Size**: 1200px × 630px is recommended for the best preview appearance.
+
+
+### Custom Static Pages
+
+You can create your own static pages by customizing
+the `about.html` template and the corresponding content files.
+
+For example:
+- `content/about/index.md` (English)
+- `content/about/index.ja.md` (Japanese)
+- `static/img/about.webp` (400x400px profile image)
+
+You can also replace the template and image with your own design.
+
+
 
 ---
 

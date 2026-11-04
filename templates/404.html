@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{#----- block extra_head -----#}
+{% block extra_head %}
+
+{% set styles = get_url(path="css/page.css", cachebust=true) %}
+<link rel="stylesheet" href="{{ styles | safe }}">
+{% set copy_js = get_url(path="js/copy-button.js", cachebust=true) %}
+<script src="{{ copy_js | safe }}" defer></script>
+{% set carousel_js = get_url(path="js/carousel.js", cachebust=true) %}
+<script src="{{ carousel_js | safe }}" defer></script>
+
+{% endblock extra_head %}
+{#----- end of block extra_head -----#}
+
+{% block content %}
+
+{% set author = config.author %}
+{% if page.authors %}
+{% set author = (page.authors | join(sep=", ")) %}
+{% endif %}
+<article class="w-full max-w-3xl mx-auto px-4 py-8 text-base-content">
+
+  <div class="blog-body prose prose-sm md:prose-base max-w-none">
+
+    <h1 class="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl">404</h1>
+    <p class="mb-4 text-3xl tracking-tight font-bold md:text-4xl">Oops! Page not found</p>
+    <p class="mb-4 text-lg font-light">The page you're looking for doesn't exist or has
+      been moved.</p>
+    <a href="{{ get_url(path='@/_index.md', lang=lang) }}">
+      <i class="fa-solid fa-home w-5"></i><span>Back to Homepage</span>
+    </a>
+  </div>
+</article>
+
+{% endblock content %}

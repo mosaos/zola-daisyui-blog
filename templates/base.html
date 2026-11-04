@@ -10,6 +10,8 @@
 <html lang="{{ lang }}" data-theme="{{ config.extra.daisyui_theme | default(value='light') }}">
 
 <head>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% set favicon = get_url(path="img/favicon.ico") %}
@@ -37,13 +39,15 @@
   {% include "fragments/head-schema.html" %}
   {% include "fragments/google-analytics.html" %}
   {% set fontsize_js = get_url(path="js/fontsize-switcher.js") %}
-  <script src="{{ fontsize_js | safe }}"></script>
+  <script src="{{ fontsize_js | safe }}" defer></script>
   {% set theme_js = get_url(path="js/theme-changer.js") %}
   <script src="{{ theme_js | safe }}"></script>
+
   {% if config.extra.search_enabled | default(value=false) %}
   {% set shortcut_js = get_url(path="js/search-shortcut.js") %}
   <script src="{{ shortcut_js | safe }}"></script>
   {% endif %}
+
   <script>
     // apply saved theme.
     const savedTheme = localStorage.getItem('theme');

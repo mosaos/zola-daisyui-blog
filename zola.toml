@@ -20,6 +20,14 @@ minify_html = true
 # The default author for pages
 author = "mosaos"
 
+[languages.en]
+title = "mosaos"
+#generate_feeds = true
+#feed_filenames = ["atom.xml"]
+taxonomies = [
+    { name = "tags" },
+]
+
 [languages.ja]
 title = "mosaos"
 generate_feeds = true
@@ -28,13 +36,30 @@ taxonomies = [
     { name = "tags" },
 ]
 
-[languages.en]
-title = "mosaos"
-#generate_feeds = true
-#feed_filenames = ["atom.xml"]
-taxonomies = [
-    { name = "tags" },
-]
+#------------------------------------------------------------------
+# i18n
+#------------------------------------------------------------------
+[translations]
+#-- ui --
+view_all = "View all"
+toc = "Table of Contents"
+share_this = "Share this article"
+#-- accessibility --
+theme_selector = "Select theme"
+font_size_selector = "Change font size"
+lang_selector = "Select language"
+menu_open = "Open menu"
+
+[languages.ja.translations]
+#-- ui --
+view_all = "一覧へ"
+toc = "目次"
+share_this = "この記事をシェアする"
+#-- accessibility --
+theme_selector = "テーマの選択"
+font_size_selector = "フォントサイズの変更"
+lang_selector = "言語の選択"
+menu_open = "メニューを開く"
 
 [markdown]
 # Whether to do syntax highlighting
