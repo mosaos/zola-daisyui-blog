@@ -16,16 +16,16 @@
     <div class="grid grid-flow-col gap-4 text-2xl">
       <!-- Atom(RSS) -->
       <a href="{{ rss_url }}" class="hover:text-primary transition-colors tooltip"
-        data-tip="RSS Feed ({{ current_lang | upper }})">
-        <i class="fa-solid fa-rss"></i>
+        data-tip="RSS Feed ({{ current_lang | upper }})" aria-label="RSS Feed ({{ current_lang | upper }})">
+        <i class="fa-solid fa-rss" aria-hidden="true"></i>
       </a>
       <!-- github -->
-      <a href="https://github.com/mosaos/" class="hover:text-primary transition-colors">
-        <i class="fa-brands fa-github"></i>
+      <a href="https://github.com/mosaos/" class="hover:text-primary transition-colors" aria-label="GitHub - mosaos">
+        <i class="fa-brands fa-github" aria-hidden="true"></i>
       </a>
       <!-- youtube -->
-      <a href="#" class="hover:text-primary transition-colors">
-        <i class="fa-brands fa-youtube"></i>
+      <a href="#" class="hover:text-primary transition-colors" aria-label="Youtube - mosaos">
+        <i class="fa-brands fa-youtube" aria-hidden="true"></i>
       </a>
     </div>
   </nav>
