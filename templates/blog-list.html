@@ -37,7 +37,7 @@
 
       <div class="flex-grow min-w-0">
         <div class="mb-1 sm:mb-2 text-xs sm:text-sm text-base-content/80">
-          {{ page.date }}
+          {{ page.date | date(format="%Y-%m-%d") }}
         </div>
         {# Title #}
         <h2 class="text-base sm:text-xl font-semibold leading-snug group-hover:text-primary transition-colors">

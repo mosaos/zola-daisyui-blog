@@ -38,8 +38,8 @@
       </figure>
 
       <div class="card-body p-5 flex flex-col flex-grow bg-base-100">
-        <div class="text-xs opacity-60 mb-1">
-          {{ page.date }}
+        <div class="text-xs text-base-content/80 mb-1">
+          {{ page.date | date(format="%Y-%m-%d") }}
         </div>
 
         <h2 class="card-title text-lg font-semibold leading-snug group-hover:text-primary transition-colors">
@@ -47,7 +47,7 @@
         </h2>
 
         {% if page.description %}
-        <p class="mt-2 text-sm leading-relaxed opacity-70 flex-grow">
+        <p class="mt-2 text-sm leading-relaxed text-base-content/80 flex-grow">
           {{ page.description }}
         </p>
         {% endif %}
