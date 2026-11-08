@@ -1,10 +1,11 @@
 +++
 title = "Wedding Dress"
-date = "2026-02-20"
+date = 2026-02-20
 description = "I made a wedding dress for our own wedding."
 
 [taxonomies]
 tags = ["Wedding", "Sewing"]
+authors = ["mosaos"]
 
 [extra]
 thumbnail = "wedding-dress-01.webp"

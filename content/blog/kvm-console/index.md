@@ -1,11 +1,11 @@
 +++
 title = "Enable Console Login on a KVM Guest"
-date = "2026-02-20"
+date = 2026-02-20
 description = "How to configure a guest when console login is not available"
-authors = ["John Doe", "hoge"]
 
 [taxonomies]
 tags = ["Kvm", "Linux"]
+authors = ["John Doe", "hoge"]
 +++
 
 KVM provides a feature to log in to a guest via the console. However, if the guest itself is not configured to allow console login, you will not be able to perform any operations even after connecting.

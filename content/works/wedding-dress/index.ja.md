@@ -1,10 +1,11 @@
 +++
 title = "ウェディングドレス"
-date = "2026-02-20"
+date = 2026-02-20
 description = "自分達の結婚式でウェディングドレスを作ったのだ"
 
 [taxonomies]
 tags = ["結婚式", "裁縫"]
+authors = ["mosaos"]
 
 [extra]
 thumbnail = "wedding-dress-01.webp"

@@ -221,3 +221,12 @@ Keep this template as your app/theme base, and manage your Markdown contents in 
    ```
 
 ---
+
+## License
+
+The source code and templates in this repository are licensed under the MIT License.
+
+**Sample contents (including articles, text, images, and other media) are NOT covered by the MIT License.**
+
+All rights to these contents are reserved by their respective copyright holders.  
+No permission is granted to reproduce, redistribute, or reuse them without prior authorization.

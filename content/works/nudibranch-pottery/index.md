@@ -1,10 +1,11 @@
 +++
 title = "Nudibranch Pottery"
-date = "2026-09-20"
+date = 2026-09-20
 description = "Nudibranch figures made from pottery clay"
 
 [taxonomies]
 tags = ["Pottery", "Ceramics", "Art"]
+authors = ["mosaos"]
 
 [extra]
 thumbnail = "nudibranch-01.jpg"

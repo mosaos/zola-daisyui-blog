@@ -16,7 +16,9 @@
 {% block content %}
 
 {% set author = config.author %}
-{% if page.authors %}
+{% if page.taxonomies.authors %}
+{% set author = (page.taxonomies.authors | join(sep=", ")) %}
+{% elif page.authors %}
 {% set author = (page.authors | join(sep=", ")) %}
 {% endif %}
 <article class="w-full max-w-3xl mx-auto px-4 py-8 text-base-content">
@@ -32,20 +34,35 @@
     <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-base-content/80 border-base-content/10">
       {% if page.date %}
       <time class="font-mono flex items-center gap-1">
-        <i class="fa-regular fa-calendar-days"></i>
-
+        <i class="fa-regular fa-calendar-days" aria-hidden="true"></i>
+        <span class="sr-only">Created at: </span>
         {{ page.date | date(format="%Y-%m-%d") }}
+        {% if page.updated %}
+        <i class="fa-solid fa-clock-rotate-left ml-2" aria-hidden="true"></i>
+        <span class="sr-only">Updated at: </span>
+        {{ page.updated | date(format="%Y-%m-%d") }}
+        {% endif %}
       </time>
       {% endif %}
 
       <span class="font-mono flex items-center gap-1">
-        <span>By</span><span class="font-medium text-base-content/80">{{author}}</span>
+        <span><i class="fa-solid fa-user" aria-hidden="true"></i></span>
+        <span class="sr-only">Author: </span>
+        {% if page.taxonomies.authors %}
+        {% for aut in page.taxonomies.authors %}
+        <a href="{{ get_taxonomy_url(kind='authors', name=aut, lang=page.lang) }}"
+          class="hover:text-primary transition-colors text-base-content/80">
+          {{ aut }}</a>{% if not loop.last %}, {% endif %}
+        {% endfor %}
+        {% else %}
+        <span class="font-medium text-base-content/80">{{author}}</span>
+        {% endif %}
       </span>
       <!-- tags -->
       {% if page.taxonomies.tags %}
       <div class="font-mono flex items-center gap-1.5">
-        <i class="fa-solid fa-tags"></i>
-
+        <i class="fa-solid fa-tags" aria-hidden="true"></i>
+        <span class="sr-only">Tags: </span>
         {% for tag in page.taxonomies.tags %}
         <a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=page.lang) }}"
           class="hover:text-primary transition-colors text-base-content/80">

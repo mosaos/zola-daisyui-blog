@@ -26,6 +26,7 @@ title = "mosaos"
 #feed_filenames = ["atom.xml"]
 taxonomies = [
     { name = "tags" },
+    { name = "authors" },
 ]
 
 [languages.ja]
@@ -34,6 +35,7 @@ generate_feeds = true
 feed_filenames = ["atom.xml"]
 taxonomies = [
     { name = "tags" },
+    { name = "authors" },
 ]
 
 #------------------------------------------------------------------

@@ -101,14 +101,13 @@
         <li class="menu-title"><span>LANG</span></li>
 
         {% if term or terms %}
-        {# --- For tag lists (terms) / individual tags (term) --- #}
+        {# --- For taxonomy lists / individual taxonomy terms --- #}
         {% set current_lang = lang | default(value=config.default_language) %}
 
-        {# Since it is a map, configure it to accept two arguments: `code` (key) and `l` (value). #}
         {% for code, l in config.languages %}
+        {% set target_taxonomy = get_taxonomy(kind=taxonomy.name, lang=code) %}
         <li>
-          <a href="{{ get_url(path='tags', lang=code) }}"
-            class="{% if current_lang == code %}active font-bold{% endif %}">
+          <a href="{{ target_taxonomy.permalink }}" class="{% if current_lang == code %}active font-bold{% endif %}">
             {{ code | upper }}
           </a>
         </li>

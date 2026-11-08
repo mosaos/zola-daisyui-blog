@@ -1,10 +1,11 @@
 +++
 title = "陶器のウミウシたち"
-date = "2026-02-20"
+date = 2026-02-20
 description = "ポタリーで作ったウミウシです"
 
 [taxonomies]
 tags = ["ポタリー", "陶器", "アート"]
+authors = ["mosaos"]
 
 [extra]
 thumbnail = "nudibranch-01.jpg"
