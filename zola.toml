@@ -79,11 +79,22 @@ theme = "github-dark"
 # Zola's standard build does not support Japanese search indexing.
 # The search form is only available for English (lang=en).
 search_enabled = true
-# Put all your custom variables here
+
+# Default daisyUI theme
 daisyui_theme = "night"
+
+# Default OGP image
 default_ogp_image = "/img/ogp-default.webp"
+
+# Google Analytics
 # google_analytics = "G-XXXXXXXXXX"
+
+# Number of Latest articles 
 latest_max = 5
+
+# Image resize
+# Thumbnails in blog-list/works-list/latest-articles are resized and converted to WebP.
+img_quality = 50
 
 # SNS share
 sns_x = true

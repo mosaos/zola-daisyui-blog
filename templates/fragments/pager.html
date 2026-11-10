@@ -1,22 +1,51 @@
 {# Pager #}
 {% if paginator and paginator.number_pagers > 1 %}
-<div class="flex justify-center items-center space-x-4 mt-12 pt-6 border-t border-base-300">
+<div class="flex justify-center items-center gap-2 mt-12 pt-6 border-t border-base-300">
 
+  {# Previous #}
   {% if paginator.previous %}
-  <a href="{{ paginator.previous }}" class="btn btn-sm btn-outline"><i class="fa-solid fa-chevron-left"></i></a>
+  <a href="{{ paginator.previous }}" class="btn btn-sm btn-outline">
+    <i class="fa-solid fa-chevron-left"></i>
+  </a>
   {% else %}
-  <button class="btn btn-sm btn-outline btn-disabled" disabled><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="btn btn-sm btn-outline btn-disabled" disabled>
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
   {% endif %}
 
-  <span class="text-sm opacity-70 font-medium">
-    {{ paginator.current_index }} / {{ paginator.number_pagers }}
-  </span>
+  {# Page numbers #}
+  {% set start = paginator.current_index - 2 %}
+  {% set end = paginator.current_index + 2 %}
 
-  {% if paginator.next %}
-  <a href="{{ paginator.next }}" class="btn btn-sm btn-outline"><i class="fa-solid fa-chevron-right"></i></a>
-  {% else %}
-  <button class="btn btn-sm btn-outline btn-disabled" disabled><i class="fa-solid fa-chevron-right"></i></button>
-  {% endif %}
+  {% if start < 1 %} {% set_global start=1 %} {% endif %} {% if end> paginator.number_pagers %}
+    {% set_global end = paginator.number_pagers %}
+    {% endif %}
+
+    {% for page in range(start=start, end=end + 1) %}
+    {% if page == paginator.current_index %}
+    <span class="btn btn-sm btn-primary">{{ page }}</span>
+    {% else %}
+    {% if page == 1 %}
+    <a href="{{ paginator.first }}" class="btn btn-sm btn-outline">{{ page }}</a>
+    {% else %}
+    <!-- {% set page_index = page - 1 %} -->
+    <!-- {% set page_url = paginator.base_url ~ page_index ~ "/" %} -->
+    {% set page_url = paginator.base_url ~ page ~ "/" %}
+    <a href="{{ page_url }}" class="btn btn-sm btn-outline">{{ page }}</a>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+
+    {# Next #}
+    {% if paginator.next %}
+    <a href="{{ paginator.next }}" class="btn btn-sm btn-outline">
+      <i class="fa-solid fa-chevron-right"></i>
+    </a>
+    {% else %}
+    <button class="btn btn-sm btn-outline btn-disabled" disabled>
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+    {% endif %}
 
 </div>
 {% endif %}
