@@ -45,9 +45,9 @@
         {% else %}
         {% set q = config.extra.img_quality | default(value=50) %}
         {% set img300 = resize_image(
-        path=page.path ~ page.extra.thumbnail, width=300, op="fit_width", format="webp", quality=q) %}
+        path=page.colocated_path ~ page.extra.thumbnail, width=300, op="fit_width", format="webp", quality=q) %}
         {% set img600 = resize_image(
-        path=page.path ~ page.extra.thumbnail, width=600, op="fit_width", format="webp", quality=q) %}
+        path=page.colocated_path ~ page.extra.thumbnail, width=600, op="fit_width", format="webp", quality=q) %}
         <img src="{{ img300.url }}" alt="{{ page.title }}" srcset="{{ img300.url }} 300w, {{img600.url}} 600w" ,
           sizes=" (max-width: 767px) 100vw, 33vw"
           class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy"
